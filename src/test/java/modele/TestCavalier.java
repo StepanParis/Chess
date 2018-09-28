@@ -1,12 +1,14 @@
 package modele;
 
 import org.junit.Assert;
+import org.junit.Test;
 
 public class TestCavalier {
 
     /*
     On veut deplacer le cavalier mais la case est occupée par une pièce de la même couleur
      */
+    @Test
     public void testDeplacementImpossible1(){
 
         QuestionnerPlateau plateau = new QuestionnerPlateau() {
@@ -25,7 +27,7 @@ public class TestCavalier {
 
         Cavalier cavalier = new Cavalier(null,CouleurPiece.NOIRE);
 
-        Assert.assertTrue(cavalier.deplacementValide(Case.getCase('b', 3), 'a', 5));
+        Assert.assertFalse(cavalier.deplacementValide(Case.getCase('b', 3), 'a', 5));
 
     }
 
