@@ -14,18 +14,21 @@ public class Tour implements Piece{
 
         if (aCase.getRow() == xf){
             for (int i = aCase.getColumn(); i <= yf; i++){
-                if (plateau.caseOccupeePar(couleur, Case.getCase(xf, i))) return false;
+                if (plateau.caseOccupeePar(couleur, Case.getCase(xf, i))) {
+                    return false;
+                }
             }
         }
 
         else
             if ((aCase.getColumn() == yf)) {
                 for (int i = aCase.getRow(); i <= xf; i++){
-                    if (plateau.caseOccupeePar(couleur, Case.getCase((char) i, yf))) return false;
+                    if (plateau.caseOccupeePar(couleur, Case.getCase((char) i, yf))) {
+                        return false;
+                    }
                 }
             }
-        else
-            return true;
+         return true;
     }
 
     public CouleurPiece getCouleur() {
