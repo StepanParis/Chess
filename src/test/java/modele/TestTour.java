@@ -1,9 +1,11 @@
 package modele;
 
 import org.junit.Assert;
+import org.junit.Test;
 
 public class TestTour {
 
+    @Test
     public void testDeplecementImposible() {
 
         QuestionnerPlateau plateau = new QuestionnerPlateau() {
@@ -23,7 +25,7 @@ public class TestTour {
 
         Tour tour = new Tour(null, CouleurPiece.NOIRE);
 
-        Assert.assertTrue(tour.deplacementValide(Case.getCase('d', 5), 'a', 5));
+        Assert.assertFalse(tour.deplacementValide(Case.getCase('d', 5), 'a', 5));
     }
 
 }

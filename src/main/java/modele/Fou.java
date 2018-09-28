@@ -11,7 +11,13 @@ public class Fou implements Piece{
     }
 
     public boolean deplacementValide(Case aCase, char xf, int yf) {
-        if ((xf - aCase.getRow()) == aCase.getColumn() - yf) {
+
+        CouleurPiece adversaire = couleur == CouleurPiece.BLANCHE ? CouleurPiece.NOIRE : CouleurPiece.BLANCHE;
+
+        if ((xf - aCase.getRow()) == yf - aCase.getColumn()) {
+            if (((xf-aCase.getRow())<0) && ((yf-aCase.getColumn())<0)) {
+
+            }
 
         }
     }
