@@ -21,6 +21,7 @@ public class Tour implements Piece{
                     return false;
                 }
             }
+            return true;
         }
 
         else
@@ -31,8 +32,9 @@ public class Tour implements Piece{
                         return false;
                     }
                 }
+                return true;
             }
-         return true;
+         return false;
     }
 
     public CouleurPiece getCouleur() {
