@@ -11,9 +11,18 @@ public class Cavalier implements Piece{
         this.couleur = couleur;
     }
 
-
-
     public boolean deplacementValide(Case aCase, char xf, int yf) {
+
+        Case caseDestination = Case.getCase(xf, yf);
+        int deltaX = (int) xf;
+        int deltaY = yf;
+
+        int dd = deltaX * deltaX + deltaY * deltaY;
+        if (dd == DISTANCE_CAVALIER) {
+            return plateau.caseOccupeePar(couleur, caseDestination);
+        } else
+            return false;
+
         /*CouleurPiece adversaire = couleur == CouleurPiece.BLANCHE ? CouleurPiece.NOIRE : CouleurPiece.BLANCHE;
         Case caseFinale = Case.getCase(xf,yf);
 
@@ -34,15 +43,6 @@ public class Cavalier implements Piece{
 
             return false;
     }*/
-        Case caseDestination = Case.getCase(xf, yf);
-        int deltaX = (int) xf;
-        int deltaY = yf;
-
-        int dd = deltaX * deltaX + deltaY * deltaY;
-        if (dd == DISTANCE_CAVALIER) {
-            return plateau.caseOccupeePar(couleur, caseDestination);
-        } else
-            return false;
     }
 
 
