@@ -5,7 +5,7 @@ public class Joueur {
     private String pseudo;
     private String motDePasse;
 
-    Joueur(String pseudo, String motDePasse) {
+    private Joueur(String pseudo, String motDePasse) {
         this.pseudo = pseudo;
         this.motDePasse = motDePasse;
     }

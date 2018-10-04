@@ -2,6 +2,7 @@ package modele.services;
 
 import modele.Joueur;
 import modele.exception.ConfirmationMDPException;
+import modele.exception.DejaConnecteException;
 import modele.exception.DonneesException;
 import modele.exception.PseudoDejaPrisException;
 
@@ -39,7 +40,18 @@ public class ServiceImpl implements AdministrationService, GestionInteractionPar
     }
 
 
-    public void connexion(String pseudo, String mdp) throws DonneesException {
+    public void connexion(String pseudo, String mdp) throws DonneesException, DejaConnecteException,
+            ConfirmationMDPException {
+
+        if (pseudo == null || mdp == null) { throw new DonneesException(); }
+
+        if (joueursConnectes.contains(pseudo)) { throw  new DejaConnecteException(); }
+
+        if (!joueursInscrit.containsKey(pseudo)) { throw new DonneesException(); }
+
+        if (!joueursInscrit.get(pseudo).isMDPOK(mdp)) {
+            throw new ConfirmationMDPException();
+        }
 
     }
 

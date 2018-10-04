@@ -20,6 +20,8 @@ public class Fou implements Piece{
             }
 
         }
+
+        return false;
     }
 
     public CouleurPiece getCouleur() {

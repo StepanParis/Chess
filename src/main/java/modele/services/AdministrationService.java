@@ -7,7 +7,7 @@ public interface AdministrationService {
     void inscription(String pseudo, String motDePasse, String confirmationMotDePasse)
             throws PseudoDejaPrisException, ConfirmationMDPException,DonneesException, DejaConnecteException;
 
-    void connexion(String pseudo,String mdp) throws DonneesException;
+    void connexion(String pseudo,String mdp) throws DonneesException, DejaConnecteException, ConfirmationMDPException;
 
     void deconnexion(String pseudo);
 
