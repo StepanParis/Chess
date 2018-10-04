@@ -57,24 +57,4 @@ public class TestCavalier {
 
     }
 
-    /*
-    On veut deplacer le cavalier mais la case est innaccessible
-     */
-    public void testDeplacementPossible2(){
-
-        QuestionnerPlateau plateau = new QuestionnerPlateau() {
-            public boolean caseOccupeePar(CouleurPiece couleurPiece, Case caseP) {
-                return false;
-            }
-
-            public boolean pieceNonMenacee(CouleurPiece couleur, Case aCase) {
-                return false;
-            }
-        };
-
-        Cavalier cavalier = new Cavalier(plateau,CouleurPiece.NOIRE);
-
-        Assert.assertFalse(cavalier.deplacementValide(Case.getCase('b', 3), 'c', 12));
-
-    }
 }
