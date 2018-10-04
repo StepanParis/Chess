@@ -5,6 +5,9 @@ import org.junit.Test;
 
 public class TestTour {
 
+    /*
+   On veut deplacer le Tour mais la case est occupée par une pièce de la même couleur
+    */
     @Test
     public void testDeplecementImposible() {
 
@@ -25,7 +28,7 @@ public class TestTour {
 
         Tour tour = new Tour(null, CouleurPiece.NOIRE);
 
-        Assert.assertFalse(tour.deplacementValide(Case.getCase('d', 5), 'a', 5));
+        Assert.assertFalse(tour.deplacementValide(Case.getCase('d', 5), 'd', 8));
     }
 
 }
