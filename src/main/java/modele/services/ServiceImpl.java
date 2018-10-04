@@ -53,9 +53,17 @@ public class ServiceImpl implements AdministrationService, GestionInteractionPar
             throw new ConfirmationMDPException();
         }
 
+        joueursConnectes.add(pseudo);
+
     }
 
-    public void deconnexion(String pseudo) {
+    public void deconnexion(String pseudo) throws DonneesException {
+
+        if (pseudo == null) { throw new DonneesException(); }
+
+        if (!joueursConnectes.contains(pseudo)) { throw new DonneesException(); }
+
+        joueursConnectes.remove(pseudo);
 
     }
 
