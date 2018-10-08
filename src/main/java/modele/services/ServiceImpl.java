@@ -1,10 +1,7 @@
 package modele.services;
 
 import modele.Joueur;
-import modele.exception.ConfirmationMDPException;
-import modele.exception.DejaConnecteException;
-import modele.exception.DonneesException;
-import modele.exception.PseudoDejaPrisException;
+import modele.exception.*;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -69,6 +66,10 @@ public class ServiceImpl implements AdministrationService, GestionInteractionPar
 
     public void desabonnement(String pseudo, String mdp) throws DonneesException {
 
+    }
+
+    public long creerUnePartie(String pseud) throws DejaImpliqueDansUnePartie, PseudeNonConnecteExceptio {
+        return 0;
     }
 }
 
