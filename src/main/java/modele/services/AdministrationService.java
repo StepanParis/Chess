@@ -9,7 +9,7 @@ public interface AdministrationService {
 
     void connexion(String pseudo,String mdp) throws DonneesException, DejaConnecteException, ConfirmationMDPException;
 
-    void deconnexion(String pseudo) throws DonneesException;
+    void deconnexion(String pseudo) throws DonneesException, NonConnecteException;
 
     void desabonnement(String pseudo,String mdp) throws DonneesException;
 }
