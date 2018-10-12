@@ -13,6 +13,9 @@ public class TestgestionPartieServicesImpl {
     String utilisateurNonConnecte;
     String utilisateurNonInscrit;
 
+    public TestgestionPartieServicesImpl() throws PseudoNonConnecteException, DejaImpliqueDansUnePartie {
+    }
+
     @Before
     public void setInformations() {
         ServicesImpl services = new ServicesImpl();
@@ -61,6 +64,16 @@ public class TestgestionPartieServicesImpl {
         Long idPartie = gestionPartieService.creerUnePartie(utilisateurConnecte3);
         Long idPartie2 = gestionPartieService.creerUnePartie(utilisateurConnecte3);
     }
+
+//rejoindreUenPartie-----------------------------------------------------------------------------------------------------
+    @Test
+    public void testRejoindreUnePartieOK() throws PseudoNonConnecteException, DejaImpliqueDansUnePartie,
+            PartiePleineException {
+        Long idPartie = gestionPartieService.creerUnePartie(utilisateurConnecte);
+        gestionPartieService.rejoindUnePartie(utilisateurConnecte2, idPartie);
+        Assert.assertTrue(true);
+    }
+
 
 
 
