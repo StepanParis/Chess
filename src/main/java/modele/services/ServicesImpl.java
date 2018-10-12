@@ -1,6 +1,7 @@
 package modele.services;
 
 import modele.Joueur;
+import modele.Partie;
 import modele.exception.*;
 
 import java.util.Collection;
@@ -8,17 +9,18 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 
-public class ServiceImpl implements AdministrationService, GestionInteractionPartieService,
+public class ServicesImpl implements AdministrationService, GestionInteractionPartieService,
         GestionPartieService{
 
     private Map<String, Joueur> joueursInscrits;
     private Collection<String> joueursConnectes;
+    private Map<Long, Partie> lesParties;
 
-    public ServiceImpl () {
+    public ServicesImpl() {
         joueursInscrits = new HashMap<String, Joueur>();
         joueursConnectes = new HashSet<String>();
+        lesParties = new HashMap<Long, Partie>();
     }
-
 
     public void inscription(String pseudo, String motDePasse, String confirmationMotDePasse)
             throws PseudoDejaPrisException, ConfirmationMDPException, DonneesException {
@@ -30,7 +32,6 @@ public class ServiceImpl implements AdministrationService, GestionInteractionPar
         Joueur nouveauJoueur = Joueur.creerJoueur(pseudo, motDePasse);
         joueursInscrits.put(pseudo, nouveauJoueur);
     }
-
 
     public void connexion(String pseudo, String mdp) throws DonneesException, DejaConnecteException,
             ConfirmationMDPException {
@@ -56,8 +57,50 @@ public class ServiceImpl implements AdministrationService, GestionInteractionPar
         if (pseudo == null) { throw new DonneesException(); }
     }
 
-    public long creerUnePartie(String pseud) throws DejaImpliqueDansUnePartie, PseudeNonConnecteExceptio {
-        return 0;
+
+    private void estConnecte(String pseudo) throws PseudoNonConnecteException {
+        if (!joueursConnectes.contains(pseudo)) throw new PseudoNonConnecteException();
+    }
+
+    private void pasImpliqueDansUnePartie(String pseudo) throws DejaImpliqueDansUnePartie {
+        Joueur joueur = joueursInscrits.get(pseudo);
+        for (Partie p: this.lesParties.values()) {
+            if (p.getJoueurs().contains(joueur)) { throw new DejaImpliqueDansUnePartie(); }
+        }
+    }
+
+    public long creerUnePartie(String pseudo) throws DejaImpliqueDansUnePartie, PseudoNonConnecteException {
+        this.estConnecte(pseudo);
+        this.pasImpliqueDansUnePartie(pseudo);
+        Partie partie = Partie.creerPartie(joueursInscrits.get(pseudo));
+        this.lesParties.put(partie.getId(), partie);
+        return partie.getId();
+    }
+
+    public void rejoindUnePartie(String pseudo, long idPartieConcernee) throws PseudoNonConnecteException,
+            DejaImpliqueDansUnePartie {
+        this.estConnecte(pseudo);
+        this.pasImpliqueDansUnePartie(pseudo);
+        Partie partie = this.lesParties.
+
+    }
+
+    public void quitterUnePartie(String pseudo, long idPartieConcernee) throws PseudoNonConnecteException {
+
+
+
+    }
+
+    public Collection<Partie> getPartiesEnAttenteDeJoueurs(String pseudo) throws PseudoNonConnecteException {
+        return null;
+    }
+
+    public Collection<Partie> getPartiesEnCours(String pseudo) throws PseudoNonConnecteException {
+        return null;
+    }
+
+    public Partie getPartieById(String pseudo, long idPartie) throws PseudoNonConnecteException {
+        return null;
     }
 
     public void rejoindUnePartie() {
