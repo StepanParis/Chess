@@ -9,7 +9,7 @@ public interface GestionPartieService {
 
     long creerUnePartie(String pseudo) throws DejaImpliqueDansUnePartie, PseudoNonConnecteException;
 
-    void rejoindUnePartie(String pseudo, long idPartieConcernee) throws PseudoNonConnecteException;
+    void rejoindUnePartie(String pseudo, long idPartieConcernee) throws PseudoNonConnecteException, DejaImpliqueDansUnePartie, PartiePleineException;
 
     void quitterUnePartie(String pseudo, long idPartieConcernee) throws PseudoNonConnecteException;
 

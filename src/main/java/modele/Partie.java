@@ -14,6 +14,7 @@ public class Partie {
     private Map<Joueur, CouleurPiece> joueurs;
     private Plateau plateauPartie;
     private static long identifiants = 0;
+    private int idJoueur = 1;
 
     public static Partie creerPartie(Joueur joueur) {
         Partie p = new Partie();
@@ -30,7 +31,16 @@ public class Partie {
         this.plateauPartie = null;
     }
 
-    public void ajouterJoueur(Joueur joueur) throws PartiePleineException { }
+    public void ajouterJoueur(Joueur joueur) throws PartiePleineException {
+        if (idJoueur == 1) {
+            idJoueur = 2;
+            joueurs.put(joueur, CouleurPiece.BLANCHE);
+        }
+        else if (idJoueur == 2) {
+            idJoueur = 1;
+            joueurs.put(joueur, CouleurPiece.NOIRE);
+        }
+    }
 
     public Collection<Joueur> getJoueurs() {
         return joueurs.keySet();

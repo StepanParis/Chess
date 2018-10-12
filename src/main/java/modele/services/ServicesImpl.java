@@ -78,11 +78,12 @@ public class ServicesImpl implements AdministrationService, GestionInteractionPa
     }
 
     public void rejoindUnePartie(String pseudo, long idPartieConcernee) throws PseudoNonConnecteException,
-            DejaImpliqueDansUnePartie {
+            DejaImpliqueDansUnePartie, PartiePleineException{
         this.estConnecte(pseudo);
         this.pasImpliqueDansUnePartie(pseudo);
-        Partie partie = this.lesParties.
-
+        Partie partie = this.lesParties.get(idPartieConcernee);
+        if (partie.getJoueurs().size() == 2) throw new PartiePleineException();
+        else partie.ajouterJoueur(joueursInscrits.get(pseudo));
     }
 
     public void quitterUnePartie(String pseudo, long idPartieConcernee) throws PseudoNonConnecteException {
