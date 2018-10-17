@@ -4,7 +4,7 @@ import modele.exception.*;
 import org.junit.*;
 
 
-public class TestgestionPartieServicesImpl {
+public class TestGestionPartieServicesImpl {
 
     GestionPartieService gestionPartieService;
     String utilisateurConnecte;
@@ -13,7 +13,7 @@ public class TestgestionPartieServicesImpl {
     String utilisateurNonConnecte;
     String utilisateurNonInscrit;
 
-    public TestgestionPartieServicesImpl() throws PseudoNonConnecteException, DejaImpliqueDansUnePartie {
+    public TestGestionPartieServicesImpl() throws PseudoNonConnecteException, DejaImpliqueDansUnePartie {
     }
 
     @Before
