@@ -6,7 +6,7 @@ public class JDBC {
 
     public JDBC() throws SQLException {
 
-        Connection connection = DriverManager.getConnection("jdbc:mysql://bdhost:3306/", "02174734", "02174734");
+        Connection connection = DriverManager.getConnection("jdbc:mysql://bdhost:3306/bd_02174734", "02174734", "02174734");
 
         Statement statement = connection.createStatement();
 
