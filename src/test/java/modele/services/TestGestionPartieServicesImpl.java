@@ -6,26 +6,27 @@ import org.junit.*;
 
 public class TestGestionPartieServicesImpl {
 
+
     GestionPartieService gestionPartieService;
-    String utilisateurConnecte;
-    String utilisateurConnecte2;
-    String utilisateurConnecte3;
-    String utilisateurNonConnecte;
-    String utilisateurNonInscrit;
+    String               utilisateurConnecte;
+    String               utilisateurConnecte2;
+    String               utilisateurConnecte3;
+    String               utilisateurNonConnecte;
+    String               utilisateurNonInscrit;
 
     public TestGestionPartieServicesImpl() throws PseudoNonConnecteException, DejaImpliqueDansUnePartie {
     }
 
     @Before
     public void setInformations() {
-        ServicesImpl services = new ServicesImpl();
+        ServicesImpl          services = new ServicesImpl();
         AdministrationService admin = services;
-        utilisateurConnecte = "y";
-        utilisateurConnecte2 = "a";
-        utilisateurConnecte3 = "e";
+        utilisateurConnecte    = "y";
+        utilisateurConnecte2   = "a";
+        utilisateurConnecte3   = "e";
         utilisateurNonConnecte = "h";
-        utilisateurNonInscrit = "t";
-        gestionPartieService = services;
+        utilisateurNonInscrit  = "t";
+        gestionPartieService   = services;
 
         try {
             admin.inscription(utilisateurConnecte, utilisateurConnecte, utilisateurConnecte);
@@ -73,10 +74,5 @@ public class TestGestionPartieServicesImpl {
         gestionPartieService.rejoindUnePartie(utilisateurConnecte2, idPartie);
         Assert.assertTrue(true);
     }
-
-
-
-
-
 
 }
