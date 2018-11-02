@@ -1,8 +1,6 @@
 package modele;
 
 import modele.exception.PartiePleineException;
-
-import java.security.PublicKey;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;

@@ -14,22 +14,30 @@ public class Tour implements Piece{
 
         CouleurPiece adversaire = couleur == CouleurPiece.BLANCHE ? CouleurPiece.NOIRE : CouleurPiece.BLANCHE;
 
-        if (aCase.getColumn() == xf){
+        if (aCase.getColumn() == xf && aCase.getRow() < yf){
             for (int i = aCase.getRow(); i <= yf; i++){
-                if (plateau.caseOccupeePar(couleur, Case.getCase(xf, i)) ||
-                    plateau.caseOccupeePar(adversaire, Case.getCase(xf, i))) return false;
+                return  !(plateau.caseOccupeePar(couleur, Case.getCase(xf, i)) &&
+                        !plateau.caseOccupeePar(adversaire, Case.getCase(xf, i)));
             }
-            return true;
         }
-
-        else
-            if ((aCase.getRow() == yf)) {
-                for (int i = aCase.getColumn(); i < xf; i++){
-                    if (plateau.caseOccupeePar(couleur, Case.getCase((char) i, yf)) ||
-                        plateau.caseOccupeePar(adversaire, Case.getCase(xf, i))) return false;
-                }
-                return true;
+        if (aCase.getColumn() == xf && aCase.getRow() > yf){
+            for (int i = aCase.getRow(); i >= yf; i--){
+                return  !(plateau.caseOccupeePar(couleur, Case.getCase(xf, i)) &&
+                        !plateau.caseOccupeePar(adversaire, Case.getCase(xf, i)));
             }
+        }
+        if (aCase.getRow() == yf && aCase.getColumn() < xf) {
+            for (int i = aCase.getColumn(); i <= xf; i++){
+                return  !(plateau.caseOccupeePar(couleur, Case.getCase((char) i, yf)) &&
+                        !plateau.caseOccupeePar(adversaire, Case.getCase((char) i, yf)));
+            }
+        }
+        if (aCase.getRow() == yf && aCase.getColumn() > xf) {
+            for (int i = aCase.getColumn(); i >= xf; i--){
+                return  !(plateau.caseOccupeePar(couleur, Case.getCase((char) i, yf)) &&
+                        !plateau.caseOccupeePar(adversaire, Case.getCase((char) i, yf)));
+            }
+        }
          return false;
     }
 
