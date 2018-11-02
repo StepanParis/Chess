@@ -14,17 +14,35 @@ public class Fou implements Piece{
 
         CouleurPiece adversaire = couleur == CouleurPiece.BLANCHE ? CouleurPiece.NOIRE : CouleurPiece.BLANCHE;
 
-        if ((xf - aCase.getRow()) == yf - aCase.getColumn()) {
-            if (((xf-aCase.getRow())<0) && ((yf-aCase.getColumn())<0)) {
+        if (Math.abs((int)aCase.getColumn() - (int)xf) == Math.abs(aCase.getRow() - yf)) {
 
+            if (((aCase.getRow() - yf) > 0) && ((aCase.getColumn() - xf)) < 0) {
+                for (int i = 1; i <= aCase.getRow() - yf; i++) {
+                    return !plateau.caseOccupeePar(couleur, Case.getCase((char)(aCase.getColumn()+1), aCase.getRow()-1)) &&
+                           !plateau.caseOccupeePar(adversaire, Case.getCase((char)(aCase.getColumn()+1), aCase.getRow()-1));
+                }
             }
-
+            if (((aCase.getRow() - yf) < 0) && ((aCase.getColumn() - xf)) > 0) {
+                for (int i = 1; i <= yf - aCase.getRow(); i++) {
+                    return !plateau.caseOccupeePar(couleur, Case.getCase((char)(aCase.getColumn()-1), aCase.getRow()+1)) &&
+                            !plateau.caseOccupeePar(adversaire, Case.getCase((char)(aCase.getColumn()-1), aCase.getRow()+1));
+                }
+            }
+            if (((aCase.getRow() - yf) > 0) && ((aCase.getColumn() - xf)) > 0) {
+                for (int i = 1; i <= aCase.getRow() - yf; i++) {
+                    return !plateau.caseOccupeePar(couleur, Case.getCase((char)(aCase.getColumn()-1), aCase.getRow()-1)) &&
+                            !plateau.caseOccupeePar(adversaire, Case.getCase((char)(aCase.getColumn()-1), aCase.getRow()-1));
+                }
+            }
+            if (((aCase.getRow() - yf) < 0) && ((aCase.getColumn() - xf)) < 0) {
+                for (int i = 1; i <= aCase.getRow() - yf; i++) {
+                    return !plateau.caseOccupeePar(couleur, Case.getCase((char)(aCase.getColumn()+1), aCase.getRow()+1)) &&
+                            !plateau.caseOccupeePar(adversaire, Case.getCase((char)(aCase.getColumn()+1), aCase.getRow()+1));
+                }
+            }
         }
-
         return false;
     }
 
-    public CouleurPiece getCouleur() {
-        return null;
-    }
+    public CouleurPiece getCouleur() { return couleur; }
 }
