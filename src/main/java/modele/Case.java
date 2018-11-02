@@ -10,8 +10,8 @@ public class Case {
         return column;
     }
 
-    public int getRow() {
-        return row;   }
+    public int getRow() { return row;   }
+
     private Case(char column, int row) {
         this.column = column;
         this.row = row;
