@@ -2,7 +2,6 @@ package modele;
 
 public class Cavalier implements Piece{
 
-    //public static final int DISTANCE_CAVALIER = 5;
     QuestionnerPlateau plateau;
     CouleurPiece couleur;
 
