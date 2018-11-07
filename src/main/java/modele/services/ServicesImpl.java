@@ -3,7 +3,9 @@ package modele.services;
 import modele.Joueur;
 import modele.Partie;
 import modele.exception.*;
+import modele.persistence.DAOJoueur;
 
+import java.sql.SQLException;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -15,6 +17,7 @@ public class ServicesImpl implements AdministrationService, GestionInteractionPa
     private Map<String, Joueur> joueursInscrits;
     private Collection<String> joueursConnectes;
     private Map<Long, Partie> lesParties;
+    DAOJoueur daoJoueur = new DAOJoueur();
 
     public ServicesImpl() {
         joueursInscrits = new HashMap<String, Joueur>();
@@ -23,14 +26,16 @@ public class ServicesImpl implements AdministrationService, GestionInteractionPa
     }
 
     public void inscription(String pseudo, String motDePasse, String confirmationMotDePasse)
-            throws PseudoDejaPrisException, ConfirmationMDPException, DonneesException {
+            throws PseudoDejaPrisException, ConfirmationMDPException, DonneesException, SQLException {
 
         if (pseudo == null || motDePasse == null || confirmationMotDePasse == null) { throw new DonneesException(); }
         if (!motDePasse.equals(confirmationMotDePasse)) { throw new ConfirmationMDPException(); }
-        if (joueursInscrits.containsKey(pseudo)) { throw new PseudoDejaPrisException(); }
+        //if (joueursInscrits.containsKey(pseudo)) { throw new PseudoDejaPrisException(); }
+        if (daoJoueur.findByPseudo(pseudo)!=null) { throw new PseudoDejaPrisException(); }
 
         Joueur nouveauJoueur = Joueur.creerJoueur(pseudo, motDePasse);
-        joueursInscrits.put(pseudo, nouveauJoueur);
+        daoJoueur.create(nouveauJoueur);
+        //joueursInscrits.put(pseudo, nouveauJoueur);
     }
 
     public void connexion(String pseudo, String mdp) throws DonneesException, DejaConnecteException,

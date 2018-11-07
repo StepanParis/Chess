@@ -4,7 +4,7 @@ import modele.exception.*;
 import org.junit.*;
 
 
-public class TestGestionPartieServicesImpl {
+/*public class TestGestionPartieServicesImpl {
 
 
     GestionPartieService gestionPartieService;
@@ -40,13 +40,15 @@ public class TestGestionPartieServicesImpl {
         catch (Exception e) {
             Assert.fail();
         }
-    }
+    }*/
 
     /**
      * Test du scénario: de création de partie OK
      * @throws PseudoNonConnecteException
      * @throws DejaImpliqueDansUnePartie
      */
+
+    /*
     @Test
     public void testCreerUnePartieOK() throws PseudoNonConnecteException, DejaImpliqueDansUnePartie {
         Long idPartie = gestionPartieService.creerUnePartie(utilisateurConnecte);
@@ -75,4 +77,4 @@ public class TestGestionPartieServicesImpl {
         Assert.assertTrue(true);
     }
 
-}
+}*/

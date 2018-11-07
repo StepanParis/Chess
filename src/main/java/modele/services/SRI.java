@@ -4,13 +4,14 @@ import modele.Partie;
 import modele.exception.*;
 
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.util.Collection;
 
 public class SRI implements ASR, GIPS, GPS{
 
     ServicesImpl service = new ServicesImpl();
     public void inscription(String pseudo, String motDePasse, String confirmationMotDePasse) throws
-            PseudoDejaPrisException, ConfirmationMDPException, DonneesException, DejaConnecteException, RemoteException {
+            PseudoDejaPrisException, ConfirmationMDPException, DonneesException, DejaConnecteException, RemoteException, SQLException {
         service.inscription(pseudo, motDePasse,confirmationMotDePasse);
     }
 

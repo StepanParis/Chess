@@ -27,7 +27,5 @@ public class ProgrammePrincipale {
         } catch (AlreadyBoundException e) {
             e.printStackTrace();
         }
-
-
     }
 }
