@@ -52,7 +52,9 @@ public class TestServicesImpl {
         administrationService.inscription("Stepan",null,"456");
     }
 
-//Test pour la connexion ------------------------------------------------------------------------------------------------
+
+
+    //Test pour la connexion ------------------------------------------------------------------------------------------------
     @Test
     public void testConnexionOK() throws PseudoDejaPrisException,
             DonneesException, ConfirmationMDPException, DejaConnecteException, SQLException {
@@ -144,5 +146,15 @@ public class TestServicesImpl {
         AdministrationService administrationService = new ServicesImpl();
         administrationService.desabonnement(null, "123");
     }
+
+    @Test
+    public void testDesabonnementOK4() throws DonneesException, SQLException {
+        AdministrationService administrationService = new ServicesImpl();
+        administrationService.desabonnement("Steve", "345");
+        Assert.assertTrue(true);
+    }
+
+
+
 
 }

@@ -1,6 +1,6 @@
 package application;
 
-import modele.persistence.DAOJoueur;
+import modele.persistance.DAOJoueur;
 
 import java.sql.*;
 

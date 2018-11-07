@@ -1,13 +1,33 @@
-package modele.persistence;
+package modele.persistance;
 
 import application.JDBC;
+
 import modele.Joueur;
 
+import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.FileHandler;
+import java.util.logging.Handler;
+import java.util.logging.Logger;
 
 public class DAOJoueur {
+
+    private static Logger l = null;
+
+    private static Logger getLogger(String path) {
+        if (l==null) {
+            l = Logger.getLogger("persistance.DAOJoueur");
+            try {
+                Handler h = new FileHandler("echecs:log");
+                l.addHandler(h);
+            }catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return l;
+    }
 
     public Joueur findByPseudo (String pseudo) throws SQLException {
         PreparedStatement ps = JDBC.connection().prepareStatement("SELECT pseudo, password FROM `UTILISATEUR`" +
@@ -38,5 +58,13 @@ public class DAOJoueur {
         ps.executeUpdate();
     }
 
-    public void getPassword(Joueur j)
+    public String getPassword(String pseudo) throws SQLException {
+        PreparedStatement ps = JDBC.connection().prepareStatement("SELECT password FROM 'UTILISATEUR' WHERE pseudo = ?");
+
+        ps.setString(1, pseudo);
+        ps.executeUpdate();
+        ResultSet rs = (ResultSet) ps;
+        System.out.println(rs.getString(3));
+        return rs.getString(3);
+    }
 }

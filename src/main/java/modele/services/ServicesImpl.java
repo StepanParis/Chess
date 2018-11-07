@@ -3,7 +3,7 @@ package modele.services;
 import modele.Joueur;
 import modele.Partie;
 import modele.exception.*;
-import modele.persistence.DAOJoueur;
+import modele.persistance.DAOJoueur;
 
 import java.sql.SQLException;
 import java.util.Collection;
@@ -30,8 +30,9 @@ public class ServicesImpl implements AdministrationService, GestionInteractionPa
 
         if (pseudo == null || motDePasse == null || confirmationMotDePasse == null) { throw new DonneesException(); }
         if (!motDePasse.equals(confirmationMotDePasse)) { throw new ConfirmationMDPException(); }
-        //if (joueursInscrits.containsKey(pseudo)) { throw new PseudoDejaPrisException(); }
+        if (joueursInscrits.containsKey(pseudo)) { throw new PseudoDejaPrisException(); }
         if (daoJoueur.findByPseudo(pseudo)!=null) { throw new PseudoDejaPrisException(); }
+
 
         Joueur nouveauJoueur = Joueur.creerJoueur(pseudo, motDePasse);
         daoJoueur.create(nouveauJoueur);
