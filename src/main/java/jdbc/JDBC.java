@@ -9,6 +9,7 @@ public class JDBC {
     }
 
     private static JDBC single=null;
+
     public static JDBC getSingleton() {
         if (single == null) {
             try {

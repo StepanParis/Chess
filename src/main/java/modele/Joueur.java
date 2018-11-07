@@ -1,5 +1,6 @@
 package modele;
 
+
 public class Joueur {
 
     private String pseudo;
@@ -17,6 +18,7 @@ public class Joueur {
     public String getPseudo() {
         return pseudo;
     }
+    public String getMotDePasse() { return motDePasse; }
 
     public boolean isMDPOK(String mdp) { return mdp.equals(motDePasse);}
 }
