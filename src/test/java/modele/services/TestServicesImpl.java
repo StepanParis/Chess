@@ -123,5 +123,26 @@ public class TestServicesImpl {
         administrationService.deconnexion(null);
     }
 
+////Test pour la déconnexion ------------------------------------------------------------------------------------------
+    @Test
+    public void testDesabonnementOK() throws DonneesException, SQLException, DejaConnecteException,
+            ConfirmationMDPException, PseudoDejaPrisException {
+        AdministrationService administrationService = new ServicesImpl();
+        administrationService.inscription("Elodie","456","456");
+        administrationService.desabonnement("Elodie", "456");
+        Assert.assertTrue(true);
+    }
+
+    @Test(expected = DonneesException.class)
+    public void testDesabonnementOK2() throws DonneesException, SQLException {
+        AdministrationService administrationService = new ServicesImpl();
+        administrationService.desabonnement("Rocky", "123");
+    }
+
+    @Test(expected = DonneesException.class)
+    public void testDesabonnementOK3() throws DonneesException, SQLException {
+        AdministrationService administrationService = new ServicesImpl();
+        administrationService.desabonnement(null, "123");
+    }
 
 }

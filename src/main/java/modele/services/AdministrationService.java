@@ -13,6 +13,6 @@ public interface AdministrationService {
 
     void deconnexion(String pseudo) throws DonneesException, NonConnecteException;
 
-    void desabonnement(String pseudo,String mdp) throws DonneesException;
+    void desabonnement(String pseudo,String mdp) throws DonneesException, SQLException;
 }
 

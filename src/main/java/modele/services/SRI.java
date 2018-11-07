@@ -24,7 +24,7 @@ public class SRI implements ASR, GIPS, GPS{
         service.deconnexion(pseudo);
     }
 
-    public void desabonnement(String pseudo, String mdp) throws DonneesException, RemoteException {
+    public void desabonnement(String pseudo, String mdp) throws DonneesException, RemoteException, SQLException {
         service.desabonnement(pseudo, mdp);
     }
 

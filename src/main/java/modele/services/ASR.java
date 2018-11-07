@@ -17,6 +17,6 @@ public interface ASR extends Remote {
 
     void deconnexion(String pseudo) throws DonneesException, NonConnecteException, RemoteException;
 
-    void desabonnement(String pseudo, String mdp) throws DonneesException, RemoteException;
+    void desabonnement(String pseudo, String mdp) throws DonneesException, RemoteException, SQLException;
 }
 

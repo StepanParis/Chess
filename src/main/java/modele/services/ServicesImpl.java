@@ -57,9 +57,13 @@ public class ServicesImpl implements AdministrationService, GestionInteractionPa
         joueursConnectes.remove(pseudo);
     }
 
-    public void desabonnement(String pseudo, String mdp) throws DonneesException {
+    public void desabonnement(String pseudo, String motDePasse) throws DonneesException, SQLException {
 
-        if (pseudo == null) { throw new DonneesException(); }
+        if (pseudo == null || motDePasse == null) { throw new DonneesException(); }
+        if (daoJoueur.findByPseudo(pseudo)==null) { throw new DonneesException(); }
+
+        Joueur joueur = Joueur.creerJoueur(pseudo, motDePasse);
+        daoJoueur.delete(joueur);
     }
 
 

@@ -32,9 +32,11 @@ public class DAOJoueur {
     }
 
     public void delete(Joueur j) throws SQLException {
-        PreparedStatement ps = JDBC.connection().prepareStatement("DELETE FROM `UTILISATEUR` VALUES WHERE pseudo = ?");
+        PreparedStatement ps = JDBC.connection().prepareStatement("DELETE FROM `UTILISATEUR` WHERE pseudo = ?");
 
         ps.setString(1, j.getPseudo());
         ps.executeUpdate();
     }
+
+    public void getPassword(Joueur j)
 }
